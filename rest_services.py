@@ -51,6 +51,7 @@ def main():
     print("Done Calling requestGet")
 
     cocktailListUrl = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail"
+    ordinaryDrink = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink"
 
 main()
  
