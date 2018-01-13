@@ -22,7 +22,10 @@ with urllib.request.urlopen("http://www.thecocktaildb.com/api/json/v1/1/filter.p
         json_data = json.loads(html)
 
         #print json data
-        print(json_data['drinks'])
+        print(json_data['drinks'], "\n")
+
+        #print pretty json
+        print(json.dumps(json_data, sort_keys=True, indent=4))
         
     #Return system code 1 if anything other that http 200 is returned
     else:
@@ -32,12 +35,4 @@ with urllib.request.urlopen("http://www.thecocktaildb.com/api/json/v1/1/filter.p
 
     
  
-    
-
-
-    ##parsed_json = json.loads(html)
-
-
-
-##print(parsed_json['drinks'])
 
