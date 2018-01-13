@@ -9,13 +9,9 @@ with urllib.request.urlopen("http://www.thecocktaildb.com/api/json/v1/1/filter.p
     statusCode = response.getcode()
     print("Status Code Returned = <" ,statusCode, ">\n")
 
+    #HTTP 200 Success.  Treat all others as failure
     if statusCode == 200:
         print("Success")
-
-        ##Get HTML from response
-        #html = response.read().decode(response.headers.get_content_charset())
-
-        #response.decode('utf-8')
 
         #Get HTML response and decode from byte to string in order
         #for json to load properly
@@ -24,6 +20,9 @@ with urllib.request.urlopen("http://www.thecocktaildb.com/api/json/v1/1/filter.p
 
         #Load json from HTML string
         json_data = json.loads(html)
+
+        #print json data
+        print(json_data['drinks'])
     else:
         print ("Failure")
         
