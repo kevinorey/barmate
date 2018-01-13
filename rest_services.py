@@ -45,8 +45,12 @@ def requestGet(url):
         
 
 def main():
+    print("Calling requestGet"
     url = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Scotch"
     requestGet(url)
+    print("Done Calling requestGet")
+
+    cocktailListUrl = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail"
 
 main()
  
