@@ -23,8 +23,11 @@ with urllib.request.urlopen("http://www.thecocktaildb.com/api/json/v1/1/filter.p
 
         #print json data
         print(json_data['drinks'])
+        
+    #Return system code 1 if anything other that http 200 is returned
     else:
-        print ("Failure")
+        print ("HTTP Status Code Failure =",statusCode)
+        sys.exit(1)
         
 
     
