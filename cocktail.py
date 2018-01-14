@@ -39,7 +39,7 @@ def main():
     print("Entered Main")
     x = Cocktail()
     print("id = ", x.getCockTailId())
-    x.setCockTailId(0)
+    x.setCockTailId("100")
     print("id = ", x.getCockTailId())
     print("Leaving Main")
 
