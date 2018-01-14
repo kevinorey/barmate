@@ -53,6 +53,9 @@ def main():
     print("id = ", x.getDrinkID())
     x.setName("Manhattan")
     x.setImageURL("http:\/\/www.thecocktaildb.com\/images\/media\/drink\/rysb3r1513706985.jpg")
+    print(x.getName())
+    print(x.getDrinkID())
+    print(x.getImageURL())
     print("Leaving Main")
 
 main()
