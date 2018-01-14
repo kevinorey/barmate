@@ -38,10 +38,10 @@ def requestGet(url):
             return json_data
     
         
-        #Return system code 1 if anything other that http 200 is returned
+        #Raise exception if anything other that http 200 is returned
         else:
             print ("HTTP Status Code Failure =",statusCode)
-            sys.exit(1)
+            raise ValueError("HTTP Status Code Failure =",statusCode)
 
 def parseJson(jsonData):
     # Access data
