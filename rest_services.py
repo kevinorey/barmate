@@ -44,9 +44,12 @@ def requestGet(url):
             raise ValueError("HTTP Status Code Failure =",statusCode)
 
 def parseJson(jsonData):
+
+    drinkList = []
     # Access data
     for x in jsonData['drinks']:
         print(x['idDrink'])
+        drinkList.append(x['idDrink'])
 
 def main():
     print("Calling requestGet")
