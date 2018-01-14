@@ -9,26 +9,25 @@ class Cocktail:
 
     def setCockTailId(self, inputId):
         print("Input Id = ", inputId)
+
+        #Check to see if value is an integer
         if isinstance(inputId, int):
             print("Input is a number")
+
+            #Value must be greater than 0
             if inputId > 0:
                 print("Input number is greater than 0")
                 self.cocktailId = inputId
+
+            #Raise Exception value less than or equal to 0
             else:
                 print("Input number is less than or equal to 0")
+                raise ValueError("Input number is less than or equal to 0")
+
+        #Invalid input
         else:
             print("Invalid input must be an integer")
-
-                
-                
-##        if inputId.isalpha():
-##            print("Invalid input:  Input must be an integer")
-##        elif inputId.isdigit():
-##            print("Input is a number... checking valid ranges")
-##            if ( inputId > 0 ):
-##                self.cocktailId = inputId
-##            else:
-##                print("Input is less than or equal to 0")
+            raise ValueError("Invalid input must be an integer")
                 
 
     def getCockTailId(self):
@@ -39,7 +38,7 @@ def main():
     print("Entered Main")
     x = Cocktail()
     print("id = ", x.getCockTailId())
-    x.setCockTailId("100")
+    x.setCockTailId(100)
     print("id = ", x.getCockTailId())
     print("Leaving Main")
 
