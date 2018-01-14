@@ -5,9 +5,6 @@ class Cocktail:
     name = ""
     imageURL = ""
 
-    def function(self):
-        print("Entered Cocktail Constructor")
-
     def setDrinkID(self, inputId):
         print("Input Id = ", inputId)
 
@@ -29,10 +26,23 @@ class Cocktail:
         else:
             print("Invalid input must be an integer")
             raise ValueError("Invalid input must be an integer")
-                
+
+    def setName(self, inputName):
+        print("Input Name = ", inputName)
+        self.name = inputName
+
+    def setImageURL(self, inputImageURL):
+        print("Input Image URL = ", inputImageURL)
+        self.imageURL = inputImageURL
 
     def getDrinkID(self):
-        return self.drinkID;
+        return self.drinkID
+
+    def getName(self):
+        return self.name
+
+    def getImageURL(self):
+        return self.imageURL
 
 
 def main():
@@ -41,6 +51,8 @@ def main():
     print("id = ", x.getDrinkID())
     x.setDrinkID(100)
     print("id = ", x.getDrinkID())
+    x.setName("Manhattan")
+    x.setImageURL("http:\/\/www.thecocktaildb.com\/images\/media\/drink\/rysb3r1513706985.jpg")
     print("Leaving Main")
 
 main()
