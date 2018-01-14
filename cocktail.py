@@ -1,13 +1,14 @@
 import json
 
 class Cocktail:
-    cocktailId = 0
-    cocktailName = ""
+    drinkID = 0
+    name = ""
+    imageURL = ""
 
     def function(self):
         print("Entered Cocktail Constructor")
 
-    def setCockTailId(self, inputId):
+    def setDrinkID(self, inputId):
         print("Input Id = ", inputId)
 
         #Check to see if value is an integer
@@ -17,7 +18,7 @@ class Cocktail:
             #Value must be greater than 0
             if inputId > 0:
                 print("Input number is greater than 0")
-                self.cocktailId = inputId
+                self.drinkID = inputId
 
             #Raise Exception value less than or equal to 0
             else:
@@ -30,16 +31,16 @@ class Cocktail:
             raise ValueError("Invalid input must be an integer")
                 
 
-    def getCockTailId(self):
-        return self.cocktailId;
+    def getDrinkID(self):
+        return self.drinkID;
 
 
 def main():
     print("Entered Main")
     x = Cocktail()
-    print("id = ", x.getCockTailId())
-    x.setCockTailId(100)
-    print("id = ", x.getCockTailId())
+    print("id = ", x.getDrinkID())
+    x.setDrinkID(100)
+    print("id = ", x.getDrinkID())
     print("Leaving Main")
 
 main()
