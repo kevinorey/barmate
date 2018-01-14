@@ -42,14 +42,20 @@ def requestGet(url):
         else:
             print ("HTTP Status Code Failure =",statusCode)
             sys.exit(1)
-        
+
+def parseJson(jsonData):
+    # Access data
+    for x in jsonData['drinks']:
+        print(x['idDrink'])
 
 def main():
     print("Calling requestGet")
     ##url = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Scotch"
     url = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail"
-    requestGet(url)
+    jsonData = requestGet(url)
     print("Done Calling requestGet")
+
+    parseJson(jsonData)
 
     cocktailListUrl = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail"
     ordinaryDrink = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink"
