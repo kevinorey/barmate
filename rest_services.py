@@ -55,9 +55,12 @@ def parseJson(jsonData):
         drink.setDrinkID(int(x['idDrink']))
         drink.setImageURL(x['strDrinkThumb'])
         drink.setName(x['strDrink'])
+
+##        print("<",x['blah'], ">")
         
         drinkList.append(drink)
-        
+
+    print("Number of Drinks = ", len(drinkList))
     return drinkList
         
         
@@ -65,7 +68,8 @@ def parseJson(jsonData):
 def main():
     print("Calling requestGet")
     ##url = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Scotch"
-    url = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail"
+    #url = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail"
+    url = "http://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary_Drink"
     jsonData = requestGet(url)
     print("Done Calling requestGet")
 
