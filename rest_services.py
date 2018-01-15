@@ -1,5 +1,6 @@
 import json
 import urllib.request
+import cocktail
 
 
 def requestGet(url):
@@ -49,7 +50,13 @@ def parseJson(jsonData):
     # Access data
     for x in jsonData['drinks']:
         print(x['idDrink'])
-        drinkList.append(x['idDrink'])
+        
+        drink = cocktail.Cocktail()
+        drink.setDrinkID(x['idDrink'])
+        drink.setImageURL(x['strDrinkThumb'])
+        drink.setName(x['strDrink'])
+        
+        drinkList.append(drink)
 
 def main():
     print("Calling requestGet")
