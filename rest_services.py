@@ -80,4 +80,21 @@ def main():
 
 main()
  
+##category
+##Link to video
+##source
+##glass.Types
+##instructions
+##servings
+##ingredient[]
+##  name
+##  type
+##  order
+##  amount
+##  measure
 
+## Liquor
+## name
+## type
+## age
+## ABV
