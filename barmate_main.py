@@ -1,4 +1,5 @@
 import tkinter as tk
+import liquor
 
 class Application(tk.Frame):
     def __init__(self, master=None):
