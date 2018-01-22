@@ -1,4 +1,5 @@
 import pymysql
+import dbutil
 
 class Liquor():
 
@@ -16,24 +17,18 @@ class Liquor():
     def addRecordToDB(self):
         print("Entered addRecordToDB")
         print("Input Record =", self)
-
-        print("Getting db connection")
-        connection = pymysql.connect(host="localhost", user="barmate", passwd="test1234", db="mydb")
-        print("Successful db connection")
         
         try:
-            with connection.cursor() as cursor:
-                sql = "INSERT INTO `liquor` (`name`, `brand`, `abv`, `age`, `liquorType`) VALUES (%s, %s, %s, %s, %s)"
-                print("Executing sql statement = " + sql)
-                cursor.execute(sql, ('Jack Daniels', 'Gentleman Jack','45.6%', '12', 'Whiskey' ))
-                print("Calling commit")
-                connection.commit()
+            db = dbutil.DBUtil()
+
+            sql = "INSERT INTO `liquor` (`name`, `brand`, `abv`, `age`, `liquorType`) VALUES (%s, %s, %s, %s, %s)"
+            values = ('Jack Daniels', 'Single Barrel','45.6%', '12', 'Whiskey' )
+
+            db.insert(sql, values)
+
         except Exception as excep:
             print("Error occurred = ", excep)
                 
-        finally:
-            print("Closing db connection....")
-            connection.close()
         print("Leaving addRecordTODB")
    
 def test():
