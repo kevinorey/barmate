@@ -28,6 +28,9 @@ class Liquor():
                 cursor.execute(sql, ('Jack Daniels', 'Gentleman Jack','45.6%', '12', 'Whiskey' ))
                 print("Calling commit")
                 connection.commit()
+        except Exception as excep:
+            print("Error occurred = ", excep)
+                
         finally:
             print("Closing db connection....")
             connection.close()
