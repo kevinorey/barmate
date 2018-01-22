@@ -16,13 +16,21 @@ class Liquor():
     def addRecordToDB(self):
         print("Entered addRecordToDB")
         print("Input Record =", self)
+
+        print("Getting db connection")
+        connection = pymysql.connect(host="localhost", user="barmate", passwd="test1234", db="mydb")
+        print("Successful db connection")
         
-        #cnx = connection.MySQLConnection(user='barmate', password='test123',host='127.0.1.1',database='mydb')
-        #cnx.close()
-        # Open database connection
-        #db = pymysql.connect("127.0.1.1","barmate","test1234","mydb" )
-        db = pymysql.connect(host="localhost", user="barmate", passwd="test1234", db="mydb")
-        db.close()
+        try:
+            with connection.cursor() as cursor:
+                sql = "INSERT INTO `liquor` (`name`, `brand`, `abv`, `age`, `liquorType`) VALUES (%s, %s, %s, %s, %s)"
+                print("Executing sql statement = " + sql)
+                cursor.execute(sql, ('Jack Daniels', 'Gentleman Jack','45.6%', '12', 'Whiskey' ))
+                print("Calling commit")
+                connection.commit()
+        finally:
+            print("Closing db connection....")
+            connection.close()
         print("Leaving addRecordTODB")
    
 def test():
