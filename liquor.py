@@ -24,7 +24,9 @@ class Liquor():
             sql = "INSERT INTO `liquor` (`name`, `brand`, `abv`, `age`, `liquorType`) VALUES (%s, %s, %s, %s, %s)"
             values = ('Jack Daniels', 'Single Barrel','45.6%', '12', 'Whiskey' )
 
-            db.insert(sql, values)
+            #db.insert(sql, values)
+
+            db.getAllRecords("SELECT * FROM `liquor`", None)
 
         except Exception as excep:
             print("Error occurred = ", excep)
