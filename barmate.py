@@ -4,7 +4,7 @@ from tkinter import font  as tkfont # python 3
 #import tkFont as tkfont  # python 2
 
 class SampleApp(tk.Tk):
-
+    
     def __init__(self, *args, **kwargs):
         tk.Tk.__init__(self, *args, **kwargs)
 
@@ -19,7 +19,7 @@ class SampleApp(tk.Tk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (StartPage, PageOne, PageTwo):
+        for F in (StartPage, ViewLiquor, AddLiquor):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
@@ -45,34 +45,34 @@ class StartPage(tk.Frame):
         label = tk.Label(self, text="This is the start page", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
 
-        button1 = tk.Button(self, text="Go to Page One",
-                            command=lambda: controller.show_frame("PageOne"))
-        button2 = tk.Button(self, text="Go to Page Two",
-                            command=lambda: controller.show_frame("PageTwo"))
+        button1 = tk.Button(self, text="View Liquor",
+                            command=lambda: controller.show_frame("ViewLiquor"))
+        button2 = tk.Button(self, text="Add Liquor",
+                            command=lambda: controller.show_frame("AddLiquor"))
         button1.pack()
         button2.pack()
 
 
-class PageOne(tk.Frame):
+class ViewLiquor(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is page 1", font=controller.title_font)
+        label = tk.Label(self, text="View Available Liquor", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
-        button = tk.Button(self, text="Go to the start page",
+        button = tk.Button(self, text="Main",
                            command=lambda: controller.show_frame("StartPage"))
         button.pack()
 
 
-class PageTwo(tk.Frame):
+class AddLiquor(tk.Frame):
 
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent)
         self.controller = controller
-        label = tk.Label(self, text="This is page 2", font=controller.title_font)
+        label = tk.Label(self, text="Add Liquor", font=controller.title_font)
         label.pack(side="top", fill="x", pady=10)
-        button = tk.Button(self, text="Go to the start page",
+        button = tk.Button(self, text="Main",
                            command=lambda: controller.show_frame("StartPage"))
         button.pack()
 
