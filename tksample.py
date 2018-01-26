@@ -7,9 +7,17 @@ class Application(tk.Frame):
         self.createWidgets()
 
     def createWidgets(self):
+
+        ## Add Liquor Button
         self.hi_there = tk.Button(self)
-        self.hi_there["text"] = "Hello World\n(click me)"
-        self.hi_there["command"] = self.say_hi
+        self.hi_there["text"] = "Add Liquor"
+        self.hi_there["command"] = self.addLiquor
+        self.hi_there.pack(side="top")
+
+        ## View Liquor Button
+        self.hi_there = tk.Button(self)
+        self.hi_there["text"] = "View Liquor"
+        self.hi_there["command"] = self.viewLiquor
         self.hi_there.pack(side="top")
 
         self.QUIT = tk.Button(self, text="QUIT", fg="red",
@@ -18,6 +26,13 @@ class Application(tk.Frame):
 
     def say_hi(self):
         print("hi there, everyone!")
+
+    def viewLiquor(self):
+        print("Time to fetch liquor")
+
+    def addLiquor(self):
+        print("Time to add liquor")
+        
 
 root = tk.Tk()
 app = Application(master=root)

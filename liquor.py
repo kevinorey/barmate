@@ -26,7 +26,9 @@ class Liquor():
 
             #db.insert(sql, values)
 
-            db.getAllRecords("SELECT * FROM `liquor`", None)
+            results = db.getAllRecords("SELECT * FROM `liquor`", None)
+
+            print("records fetched = ", results)
 
         except Exception as excep:
             print("Error occurred = ", excep)
