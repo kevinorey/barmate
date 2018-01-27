@@ -67,35 +67,44 @@ class ViewLiquor(tk.Frame):
 
 class AddLiquor(tk.Frame):
 
+    name = None
+    brand = None
+
     def __init__(self, parent, controller):
+
+        self.name = StringVar()
+        self.brand = StringVar()
+        
         tk.Frame.__init__(self, parent)
         self.controller = controller
         label = tk.Label(self, text="Add Liquor", font=controller.title_font)
-        label.grid(row=0, column=0)
+        label.grid(row=0, column=0, pady=10)
+        
+        ## Liquor Name and Input
+        nameLabel = tk.Label(self, text="Name", font=controller.title_font)
+        nameLabel.grid(row=2, column=0, pady=10)
+        nameInput = Entry(self, textvariable=self.name, width=25)
+        nameInput.grid(row=2, column=1)
+
+        ## Liquor brand and Input
+        brandLabel = tk.Label(self, text="Brand", font=controller.title_font)
+        brandLabel.grid(row=3, column=0, pady=10)
+        brandInput = Entry(self, textvariable=self.brand, width=25)
+        brandInput.grid(row=3, column=1)
         
 
-        nameLabel = tk.Label(self, text="Name", font=controller.title_font)
-        nameLabel.grid(row=2, column=0)
-
-        e = Entry(self, width=25)
-        e.grid(row=2, column=1)
-
         addButton = tk.Button(self, text="Add", command=self.addToDB)
-        addButton.grid(row=3, column=0)
+        addButton.grid(row=4, column=0, pady=10)
     
 
         button = tk.Button(self, text="Main", command=lambda: controller.show_frame("StartPage"))
-        button.grid(row=4, column=0)
+        button.grid(row=5, column=0)
 
     def addToDB(self):
         print("Entered addTODB")
-        
-  
-##      button = tk.Button(self, text="Main",
-##                           command=lambda: controller.show_frame("StartPage"))
-##        button.pack()
+        print("Collected name = ", self.name.get())
+        print("Collected brand = ", self.brand.get())
 
-        
 
 
 if __name__ == "__main__":
