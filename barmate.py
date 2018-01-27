@@ -1,6 +1,9 @@
 import tkinter as tk                
 from tkinter import font  as tkfont
 from tkinter import *
+import dbutil
+import liquor
+
 
 
 class SampleApp(tk.Tk):
@@ -9,6 +12,7 @@ class SampleApp(tk.Tk):
         tk.Tk.__init__(self, *args, **kwargs)
 
         self.title_font = tkfont.Font(family='Helvetica', size=18, weight="bold", slant="italic")
+        self.title("Welcome to BarMate")
 
         # the container is where we'll stack a bunch of frames
         # on top of each other, then the one we want visible
@@ -69,41 +73,70 @@ class AddLiquor(tk.Frame):
 
     name = None
     brand = None
+    age = None
+    abv = None
+    liquorType = None
 
     def __init__(self, parent, controller):
 
         self.name = StringVar()
         self.brand = StringVar()
+        self.age = StringVar()
+        self.abv = StringVar()
+        self.liquorType = StringVar()
         
         tk.Frame.__init__(self, parent)
         self.controller = controller
         label = tk.Label(self, text="Add Liquor", font=controller.title_font)
         label.grid(row=0, column=0, pady=10)
         
-        ## Liquor Name and Input
+        ## Liquor Name
         nameLabel = tk.Label(self, text="Name", font=controller.title_font)
         nameLabel.grid(row=2, column=0, pady=10)
         nameInput = Entry(self, textvariable=self.name, width=25)
-        nameInput.grid(row=2, column=1)
+        nameInput.grid(row=2, column=1, pady=10)
 
-        ## Liquor brand and Input
+        ## Liquor brand
         brandLabel = tk.Label(self, text="Brand", font=controller.title_font)
         brandLabel.grid(row=3, column=0, pady=10)
         brandInput = Entry(self, textvariable=self.brand, width=25)
-        brandInput.grid(row=3, column=1)
+        brandInput.grid(row=3, column=1, pady=10)
+
+        ## Liquor age
+        ageLabel = tk.Label(self, text="Age", font=controller.title_font)
+        ageLabel.grid(row=4, column=0, pady=10)
+        ageInput = Entry(self, textvariable=self.age, width=25)
+        ageInput.grid(row=4, column=1, pady=10)
+
+        ## Liquor abv
+        abvLabel = tk.Label(self, text="ABV", font=controller.title_font)
+        abvLabel.grid(row=5, column=0, pady=10)
+        abvInput = Entry(self, textvariable=self.abv, width=25)
+        abvInput.grid(row=5, column=1, pady=10)
+
+        ## Liquor type dropdowns
+        liquorLabel = tk.Label(self, text="Type", font=controller.title_font)
+        liquorLabel.grid(row=6, column=0, pady=10)
+        choices = { 'Pizza','Lasagne','Fries','Fish','Potatoe'}
+        liquorTypeMenu = OptionMenu(self, self.liquorType, *choices)
+        liquorTypeMenu.grid(row=6, column=1, pady=10)
+
         
 
+        ## Add to db
         addButton = tk.Button(self, text="Add", command=self.addToDB)
-        addButton.grid(row=4, column=0, pady=10)
+        addButton.grid(row=7, column=0, pady=10)
     
 
         button = tk.Button(self, text="Main", command=lambda: controller.show_frame("StartPage"))
-        button.grid(row=5, column=0)
+        button.grid(row=8, column=0)
 
     def addToDB(self):
         print("Entered addTODB")
         print("Collected name = ", self.name.get())
         print("Collected brand = ", self.brand.get())
+        print("Collected age = ", self.age.get())
+        print("Collected abv = ", self.abv.get())
 
 
 

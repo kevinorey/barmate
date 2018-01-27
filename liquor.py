@@ -34,9 +34,9 @@ class Liquor():
                 
         print("Leaving addRecordTODB")
    
-def test():
-    print("Entered liquor test")
-    liquor = Liquor()
-    liquor.addRecordToDB()
-        
-test()
+##def test():
+##    print("Entered liquor test")
+##    liquor = Liquor()
+##    liquor.addRecordToDB()
+##        
+##test()
