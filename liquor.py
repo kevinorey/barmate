@@ -9,7 +9,6 @@ class Liquor():
     name = None
     liquorType = None
     brand = None
-    name = None
     
     def __init__(self):
         print("Entered Liquor constructor")

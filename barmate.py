@@ -1,7 +1,7 @@
-import tkinter as tk                # python 3
-from tkinter import font  as tkfont # python 3
-#import Tkinter as tk     # python 2
-#import tkFont as tkfont  # python 2
+import tkinter as tk                
+from tkinter import font  as tkfont
+from tkinter import *
+
 
 class SampleApp(tk.Tk):
     
@@ -71,10 +71,21 @@ class AddLiquor(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         label = tk.Label(self, text="Add Liquor", font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
-        button = tk.Button(self, text="Main",
-                           command=lambda: controller.show_frame("StartPage"))
-        button.pack()
+        label.grid(row=0, column=0)
+        #label.pack(side="top", fill="x", pady=10)
+        
+
+##        nameLabel = tk.Label(self, text="Name", font=controller.title_font)
+##        nameLabel.pack()
+##
+##        e = Entry(self, width=25)
+##        e.pack()
+##        
+##        button = tk.Button(self, text="Main",
+##                           command=lambda: controller.show_frame("StartPage"))
+##        button.pack()
+
+        
 
 
 if __name__ == "__main__":
