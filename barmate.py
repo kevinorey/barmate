@@ -72,16 +72,26 @@ class AddLiquor(tk.Frame):
         self.controller = controller
         label = tk.Label(self, text="Add Liquor", font=controller.title_font)
         label.grid(row=0, column=0)
-        #label.pack(side="top", fill="x", pady=10)
         
 
-##        nameLabel = tk.Label(self, text="Name", font=controller.title_font)
-##        nameLabel.pack()
-##
-##        e = Entry(self, width=25)
-##        e.pack()
-##        
-##        button = tk.Button(self, text="Main",
+        nameLabel = tk.Label(self, text="Name", font=controller.title_font)
+        nameLabel.grid(row=2, column=0)
+
+        e = Entry(self, width=25)
+        e.grid(row=2, column=1)
+
+        addButton = tk.Button(self, text="Add", command=self.addToDB)
+        addButton.grid(row=3, column=0)
+    
+
+        button = tk.Button(self, text="Main", command=lambda: controller.show_frame("StartPage"))
+        button.grid(row=4, column=0)
+
+    def addToDB(self):
+        print("Entered addTODB")
+        
+  
+##      button = tk.Button(self, text="Main",
 ##                           command=lambda: controller.show_frame("StartPage"))
 ##        button.pack()
 
