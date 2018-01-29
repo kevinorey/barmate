@@ -38,6 +38,7 @@ class Liquor():
 
         except Exception as excep:
             print("Error occurred = ", excep)
+            raise Exception(excep)
                 
         print("Leaving addRecordTODB")
 
@@ -54,5 +55,6 @@ class Liquor():
 
         except Exception as excep:
             print("Error occurred = ", excep)
+            raise Exception(excep)
                 
         print("Leaving addRecordTODB")

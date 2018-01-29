@@ -148,9 +148,17 @@ class AddLiquor(tk.Frame):
         print("Collected abv = ", self.abv.get())
         print("Collected Liquor Type = ", self.liquorType.get())
 
-        liquor = Liquor(self.name.get(), self.brand.get(), self.abv.get(), self.age.get(), self.liquorType.get())
-        liquor.addRecordToDB()
+        try:
 
+            liquor = Liquor(self.name.get(), self.brand.get(), self.abv.get(), self.age.get(), self.liquorType.get())
+            liquor.addRecordToDB()
+
+        except Exception as excep:
+            print("Error occurred = ", excep)
+
+            errorLabel = tk.Label(self, text="Error Occurred", fg="red",font=self.controller.title_font)
+            errorLabel.grid(row=5, column=0, pady=10)
+            raise Exception(excep)
 
     def convertToList(self):
         liquorChoices = []
