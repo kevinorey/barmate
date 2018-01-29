@@ -3,8 +3,16 @@ from tkinter import font  as tkfont
 from tkinter import *
 import dbutil
 import liquor
+from enum import Enum
 
-
+class LiquorType(Enum):
+    SCOTCH = "Scotch"
+    WHISKEY = "Whiskey"
+    WHISKY = "Whisky"
+    VODKA = "Vodka"
+    GIN = "Gin"
+    BOURBON = "Bourbin"
+        
 
 class SampleApp(tk.Tk):
     
@@ -117,11 +125,12 @@ class AddLiquor(tk.Frame):
         ## Liquor type dropdowns
         liquorLabel = tk.Label(self, text="Type", font=controller.title_font)
         liquorLabel.grid(row=6, column=0, pady=10)
-        choices = { 'Pizza','Lasagne','Fries','Fish','Potatoe'}
-        liquorTypeMenu = OptionMenu(self, self.liquorType, *choices)
+
+        liquorList = sorted(self.convertToList())
+        self.liquorType.set(liquorList[0])
+        liquorTypeMenu = OptionMenu(self, self.liquorType, *liquorList)
         liquorTypeMenu.grid(row=6, column=1, pady=10)
 
-        
 
         ## Add to db
         addButton = tk.Button(self, text="Add", command=self.addToDB)
@@ -137,8 +146,16 @@ class AddLiquor(tk.Frame):
         print("Collected brand = ", self.brand.get())
         print("Collected age = ", self.age.get())
         print("Collected abv = ", self.abv.get())
+        print("Collected Liquor Type = ", self.liquorType.get())
 
 
+    def convertToList(self):
+        liquorChoices = []
+
+        for alcoholType in LiquorType:
+            liquorChoices.append(alcoholType.value)
+
+        return liquorChoices
 
 if __name__ == "__main__":
     app = SampleApp()
