@@ -12,6 +12,7 @@ class LiquorType(Enum):
     VODKA = "Vodka"
     GIN = "Gin"
     BOURBON = "Bourbin"
+    TEQUILA = "Tequila"
         
 
 class SampleApp(tk.Tk):
