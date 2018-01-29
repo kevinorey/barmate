@@ -153,11 +153,14 @@ class AddLiquor(tk.Frame):
             liquor = Liquor(self.name.get(), self.brand.get(), self.abv.get(), self.age.get(), self.liquorType.get())
             liquor.addRecordToDB()
 
+            successLabel = tk.Label(self, text="Successfully added liquor to inventory", fg="green",font=self.controller.title_font)
+            successLabel.grid(row=9, column=0, pady=10)
+
         except Exception as excep:
             print("Error occurred = ", excep)
 
             errorLabel = tk.Label(self, text="Error Occurred", fg="red",font=self.controller.title_font)
-            errorLabel.grid(row=5, column=0, pady=10)
+            errorLabel.grid(row=9, column=0, pady=10)
             raise Exception(excep)
 
     def convertToList(self):
