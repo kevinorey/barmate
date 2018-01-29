@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import font  as tkfont
 from tkinter import *
 import dbutil
-import liquor
+from liquor import Liquor
 from enum import Enum
 
 class LiquorType(Enum):
@@ -147,6 +147,9 @@ class AddLiquor(tk.Frame):
         print("Collected age = ", self.age.get())
         print("Collected abv = ", self.abv.get())
         print("Collected Liquor Type = ", self.liquorType.get())
+
+        liquor = Liquor(self.name.get(), self.brand.get(), self.abv.get(), self.age.get(), self.liquorType.get())
+        liquor.addRecordToDB()
 
 
     def convertToList(self):

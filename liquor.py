@@ -13,6 +13,14 @@ class Liquor():
     def __init__(self):
         print("Entered Liquor constructor")
 
+    def __init__(self, name, brand, abv, age, liquorType):
+        self.name = name
+        self.brand = brand
+        self.abv = abv
+        self.age = age
+        self.liquorType = liquorType
+        print("Entered Liquor constructor")
+
     def addRecordToDB(self):
         print("Entered addRecordToDB")
         print("Input Record =", self)
@@ -21,9 +29,24 @@ class Liquor():
             db = dbutil.DBUtil()
 
             sql = "INSERT INTO `liquor` (`name`, `brand`, `abv`, `age`, `liquorType`) VALUES (%s, %s, %s, %s, %s)"
-            values = ('Jack Daniels', 'Single Barrel','45.6%', '12', 'Whiskey' )
+            values = (self.name, self.brand,self.abv, self.age, self.liquorType )
 
-            #db.insert(sql, values)
+            print("Insert SQL = ", sql)
+            print("Values = ", values)
+
+            db.insert(sql, values)
+
+        except Exception as excep:
+            print("Error occurred = ", excep)
+                
+        print("Leaving addRecordTODB")
+
+    def getLiquorsFromDB(self):
+
+        print("Entered getLiquorsFromDB")
+        
+        try:
+            db = dbutil.DBUtil()
 
             results = db.getAllRecords("SELECT * FROM `liquor`", None)
 
@@ -33,10 +56,3 @@ class Liquor():
             print("Error occurred = ", excep)
                 
         print("Leaving addRecordTODB")
-   
-##def test():
-##    print("Entered liquor test")
-##    liquor = Liquor()
-##    liquor.addRecordToDB()
-##        
-##test()
