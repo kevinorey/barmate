@@ -5,13 +5,14 @@ import dbutil
 from liquor import Liquor
 from enum import Enum
 
+
 class LiquorType(Enum):
     SCOTCH = "Scotch"
     WHISKEY = "Whiskey"
     WHISKY = "Whisky"
     VODKA = "Vodka"
     GIN = "Gin"
-    BOURBON = "Bourbin"
+    RUM = "Rum"
     TEQUILA = "Tequila"
         
 
@@ -65,6 +66,8 @@ class StartPage(tk.Frame):
         button1.pack()
         button2.pack()
 
+        
+
 
 class ViewLiquor(tk.Frame):
 
@@ -72,10 +75,37 @@ class ViewLiquor(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
         label = tk.Label(self, text="View Available Liquor", font=controller.title_font)
-        label.pack(side="top", fill="x", pady=10)
+        label.grid(row=0, column=0)
+
+        self.buildListBox()
+        
         button = tk.Button(self, text="Main",
                            command=lambda: controller.show_frame("StartPage"))
-        button.pack()
+        button.grid(row=2, column=0)
+
+    def buildListBox(self):
+
+        scrollbar = Scrollbar(self)
+        scrollbar.pack(side=RIGHT, fill=Y)
+        
+        # create the listbox (note that size is in characters)
+        liquorListBox = tk.Listbox(self, width=25, height=6)
+        liquorListBox.grid(row=1, column=0)
+
+        # create a vertical scrollbar to the right of the listbox
+##        yscroll = tk.Scrollbar(command=liquorListBox.yview, orient=tk.VERTICAL)
+##        yscroll.grid(row=0, column=1, sticky=tk.N+tk.S)
+##        liquorListBox.configure(yscrollcommand=yscroll.set)
+
+        # load the listbox with data
+
+        liquor_list = ["Scotch", "Gin", "Rum"]
+        
+        for item in liquor_list:
+            liquorListBox.insert(tk.END, item)
+
+        liquorListBox.config(yscrollcommand=scrollbar.set)
+        scrollbar.config(command=liquorListBox.yview)
 
 
 class AddLiquor(tk.Frame):
@@ -98,18 +128,18 @@ class AddLiquor(tk.Frame):
         self.controller = controller
         label = tk.Label(self, text="Add Liquor", font=controller.title_font)
         label.grid(row=0, column=0, pady=10)
+
+         ## Liquor brand
+        brandLabel = tk.Label(self, text="Brand", font=controller.title_font)
+        brandLabel.grid(row=2, column=0, pady=10)
+        brandInput = Entry(self, textvariable=self.brand, width=25)
+        brandInput.grid(row=2, column=1, pady=10)
         
         ## Liquor Name
         nameLabel = tk.Label(self, text="Name", font=controller.title_font)
-        nameLabel.grid(row=2, column=0, pady=10)
+        nameLabel.grid(row=3, column=0, pady=10)
         nameInput = Entry(self, textvariable=self.name, width=25)
-        nameInput.grid(row=2, column=1, pady=10)
-
-        ## Liquor brand
-        brandLabel = tk.Label(self, text="Brand", font=controller.title_font)
-        brandLabel.grid(row=3, column=0, pady=10)
-        brandInput = Entry(self, textvariable=self.brand, width=25)
-        brandInput.grid(row=3, column=1, pady=10)
+        nameInput.grid(row=3, column=1, pady=10)
 
         ## Liquor age
         ageLabel = tk.Label(self, text="Age", font=controller.title_font)
